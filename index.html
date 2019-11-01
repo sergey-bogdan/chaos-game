@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chaos game</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+        body {
+            background-color: #ebebeb;
+        }
+
+        canvas {
+            background-color: white;
+            width: 100%;
+            height: auto;
+        }
+    </style>
+    <script defer src="index.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row pt-2">
+            <div class="col-12 col-md-6">
+                <canvas id="canvas" width="1000" height="1000">
+                    Canvas is not supported in your browser
+                </canvas>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="mb-3">
+                    Iterations: <span id="iterations">0</span>
+                </div>
+                <div class="mb-3">
+                    Starting from the center, on every iteration we select a random point
+                    from initial points based on some
+                    restrictions then draw new point at the half distance between previous point and initial
+                    point.
+                </div>
+                <form id="form-start">
+                    <div class="mb-3">
+                        <button type="submit" id="start" class="btn btn-primary">Start</button>
+                        <button type="submit" class="btn btn-primary" form="form-stop">Stop</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="points">Number of points</label>
+                        <input form="form" name="points" type="number" id="points" class="form-control" min="3" max="12"
+                            value="3">
+                    </div>
+                    <div class="form-group">
+                        <label for="restrictions">Restrictions</label>
+                        <select id="restrictions" name="restrictions" class="form-control">
+                            <option value="null" selected="selected">None</option>
+                        </select>
+                    </div>
+                    <div>
+                        Options:
+                        <div class="form-group mt-3">
+                            <label for="max-iterations">Iteration limit: (More iterations = sharper result)</label>
+                            <input type="number" name="max-iterations" min="1000" max="500000" class="form-control"
+                                value="200000">
+                        </div>
+                        <div class="form-group mt-3">
+                            <label for="skip-iterations">Skip iterations per frame: (More limit = faster drawing but may
+                                be laggy)</label>
+                            <input type="number" name="skip-iterations" min="1" max="5000" class="form-control"
+                                value="500">
+                        </div>
+                    </div>
+                </form>
+                <form id="form-stop"></form>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
